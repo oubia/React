@@ -1,25 +1,18 @@
 {
   "items": [
     {
-      "name": "name",
-      "price": 0,
-      "type": "asd",
-      "brand": "asd",
+      "name": "mohammed",
+      "price": "20",
+      "type": "something",
+      "brand": "something else",
       "id": 1
     },
     {
-      "name": "cat",
-      "price": "20",
-      "type": "awsome",
-      "brand": "rare",
-      "id": 18
-    },
-    {
-      "name": "",
-      "price": 0,
-      "type": "",
-      "brand": "",
-      "id": 19
+      "name": "name",
+      "price": "21.2",
+      "type": "another name",
+      "brand": "fullname",
+      "id": 2
     }
   ]
 }

@@ -21,7 +21,7 @@ function App() {
     console.log("use effect");
     //when you unmout somthing this well run
     return () => {
-      console.log("cleanup!!!");
+      console.log("cleanup!!! ");
     };
     // to make it run in surten ways if we make it [] it gonna run one time.
     //[data] use effect will run just if we did something with data nothing will happend to filters
@@ -39,6 +39,24 @@ function App() {
 
   const updateFilters = (searchParams) => {
     setFilters(searchParams);
+  };
+
+  const DeleteItem = (item) => {
+    const items = data["items"];
+    const requestOptions = {
+      method: "DELETE",
+    };
+    fetch(`http://localhost:3000/items/${item.id}`, requestOptions).then(
+      (response) => {
+        // check if the data had been deleted in the data base
+        if (response.ok) {
+          // if yes we will delete item from the frontend
+          const idx = items.indexOf(item);
+          items.splice(idx, 1);
+          setData({ items: items });
+        }
+      }
+    );
   };
   const additemtodata = (item) => {
     let items = data["items"];
@@ -89,7 +107,10 @@ function App() {
     <div className="container">
       <Title color="red">Testy</Title>
       <div className="row mt-3  ">
-        <ItemsDisplay items={filterData(data["items"])} />
+        <ItemsDisplay
+          DeleteItem={DeleteItem}
+          items={filterData(data["items"])}
+        />
       </div>
       <div className="row mt-3">
         <SearchBar searchparams={updateFilters} />

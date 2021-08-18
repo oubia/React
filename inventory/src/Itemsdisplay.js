@@ -1,6 +1,6 @@
 import React from "react";
 
-function ItemsDisplay(props) {
+function ItemsDisplay({ items, DeleteItem }) {
   const showitem = (item) => {
     return (
       <tr>
@@ -9,11 +9,16 @@ function ItemsDisplay(props) {
         <td>{item.price}</td>
         <td>{item.type}</td>
         <td>{item.brand}</td>
+        <td>
+          <button className="btn btn-danger" onClick={() => DeleteItem(item)}>
+            Delete
+          </button>
+        </td>
       </tr>
     );
   };
 
-   return (
+  return (
     <div className="container">
       <div className="row">
         <h2>Items</h2>
@@ -27,9 +32,10 @@ function ItemsDisplay(props) {
               <th scope="col">Price</th>
               <th scope="col">Type</th>
               <th scope="col">Brand</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
-          <tbody>{props.items.map(showitem)}</tbody>
+          <tbody>{items.map(showitem)}</tbody>
         </table>
       </div>
     </div>
